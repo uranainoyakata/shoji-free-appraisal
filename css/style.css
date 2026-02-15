@@ -235,7 +235,7 @@ body {
   border-radius: var(--radius);
   outline: none;
   resize: vertical;
-  min-height: 120px;
+  min-height: 240px;
   transition: border-color 0.3s ease;
 }
 

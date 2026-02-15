@@ -1,0 +1,492 @@
+/* ============================================
+ *  無料鑑定受付サイト — スタイルシート
+ *  
+ *  デザインコンセプト：
+ *  - 和風・荘厳な雰囲気（伝統的占いサイト風）
+ *  - 墨色背景 × 金色アクセント × 明朝体
+ *  - モバイルファースト設計
+ * ============================================ */
+
+/* ------------------------------------------
+ *  CSS変数（カスタムプロパティ）
+ *  色やフォントを一箇所で管理。
+ *  デザイン変更時はここを変えるだけでOK。
+ * ------------------------------------------ */
+:root {
+  /* === 背景色 === */
+  --bg-primary: #0d0d1a;
+  /* 漆黒（メイン背景） */
+  --bg-card: #1a1a2e;
+  /* 墨色（カード背景） */
+  --bg-input: #16213e;
+  /* 深藍（入力欄背景） */
+
+  /* === 文字色 === */
+  --text-primary: #e8e0d0;
+  /* 生成り色（メインテキスト） */
+  --text-secondary: #a89a85;
+  /* 薄茶（補助テキスト） */
+  --text-gold: #c9a84c;
+  /* 金色（アクセント文字） */
+
+  /* === アクセント色 === */
+  --accent-gold: #c9a84c;
+  /* 金（メインアクセント） */
+  --accent-gold-dark: #a07830;
+  /* 暗い金（ボーダーなど） */
+  --accent-red: #8b2525;
+  /* 朱色（装飾用） */
+
+  /* === ボーダー・区切り線 === */
+  --border-gold: #6b5a2e;
+  /* 金系ボーダー */
+  --border-subtle: #2a2a4a;
+  /* 薄いボーダー */
+
+  /* === フォント === */
+  --font-main: 'Noto Serif JP', 'Yu Mincho', '游明朝', serif;
+  --font-body: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+
+  /* === サイズ === */
+  --max-width: 560px;
+  /* コンテンツ最大幅 */
+  --radius: 4px;
+  /* 角丸（控えめ） */
+}
+
+
+/* ------------------------------------------
+ *  リセット・基本設定
+ * ------------------------------------------ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  min-height: 100vh;
+  /* 和紙のような微かなテクスチャ感を出す背景 */
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
+}
+
+
+/* ------------------------------------------
+ *  ヘッダー
+ *  和風の荘厳な印象を出すヘッダー
+ * ------------------------------------------ */
+.site-header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  border-bottom: 1px solid var(--border-gold);
+  /* 上部に金の装飾ライン */
+  border-top: 3px solid var(--accent-gold);
+}
+
+/* サイトタイトル（サービス名） */
+.site-title {
+  font-family: var(--font-main);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-gold);
+  letter-spacing: 0.3em;
+  margin-bottom: 8px;
+}
+
+/* サブタイトル */
+.site-subtitle {
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.15em;
+}
+
+/* 装飾区切り線（※や◆を使った和風の区切り） */
+.decorative-line {
+  text-align: center;
+  color: var(--accent-gold-dark);
+  font-size: 0.85rem;
+  letter-spacing: 0.5em;
+  padding: 12px 0;
+  user-select: none;
+}
+
+
+/* ------------------------------------------
+ *  メインコンテンツ
+ * ------------------------------------------ */
+.main-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+}
+
+
+/* ------------------------------------------
+ *  説明セクション
+ * ------------------------------------------ */
+.intro-section {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius);
+  background-color: rgba(201, 168, 76, 0.03);
+}
+
+.intro-section h2 {
+  font-family: var(--font-main);
+  font-size: 1.2rem;
+  color: var(--text-gold);
+  margin-bottom: 12px;
+  letter-spacing: 0.1em;
+}
+
+.intro-section p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+
+/* ------------------------------------------
+ *  フォーム全体
+ * ------------------------------------------ */
+.form-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius);
+  padding: 30px 24px;
+}
+
+/* フォームグループ（ラベル＋入力欄のセット） */
+.form-group {
+  margin-bottom: 24px;
+}
+
+/* ラベル */
+.form-group label {
+  display: block;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  color: var(--text-gold);
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+/* 「必須」バッジ */
+.required-badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: #fff;
+  background-color: var(--accent-red);
+  padding: 1px 6px;
+  border-radius: 2px;
+  margin-left: 8px;
+  vertical-align: middle;
+  letter-spacing: 0;
+}
+
+/* 入力欄の補足説明 */
+.form-hint {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+/* テキスト入力・日付入力 */
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* テキストエリア */
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.3s ease;
+}
+
+/* フォーカス時の装飾（金色のボーダー） */
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-gold);
+}
+
+/* プレースホルダーの色 */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #555;
+}
+
+
+/* ------------------------------------------
+ *  生年月日の年・月・日セレクトボックス
+ * ------------------------------------------ */
+.birthday-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.birthday-field {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.birthday-field select {
+  width: 100%;
+  padding: 10px 8px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  /* セレクトボックスの矢印を見やすく */
+  appearance: auto;
+}
+
+.birthday-field select:focus {
+  border-color: var(--accent-gold);
+}
+
+.birthday-unit {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  min-width: 1.2em;
+}
+
+
+/* ------------------------------------------
+ *  スパム対策用ハニーポット
+ *  これが見えている場合はbot。CSSで非表示にする。
+ * ------------------------------------------ */
+.honeypot-field {
+  /* 画面外に飛ばして非表示にする */
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+
+/* ------------------------------------------
+ *  送信ボタン
+ * ------------------------------------------ */
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  font-family: var(--font-main);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bg-primary);
+  background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark));
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  letter-spacing: 0.2em;
+  transition: opacity 0.3s ease, transform 0.1s ease;
+  margin-top: 8px;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* 送信中（ボタン無効化時）のスタイル */
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* ------------------------------------------
+ *  注意書き（個人情報の取り扱い）
+ * ------------------------------------------ */
+.privacy-notice {
+  margin-top: 20px;
+  padding: 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  text-align: center;
+}
+
+
+/* ------------------------------------------
+ *  フッター
+ * ------------------------------------------ */
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid var(--border-gold);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+
+/* ------------------------------------------
+ *  送信完了ページ（thanks.html）
+ * ------------------------------------------ */
+.thanks-content {
+  text-align: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.thanks-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.thanks-content h1 {
+  font-family: var(--font-main);
+  font-size: 1.6rem;
+  color: var(--text-gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+}
+
+.thanks-message {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 2;
+  margin-bottom: 30px;
+}
+
+.thanks-notice {
+  padding: 16px;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius);
+  background-color: rgba(201, 168, 76, 0.05);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+/* 戻るリンク */
+.back-link {
+  display: inline-block;
+  color: var(--text-gold);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid var(--border-gold);
+  padding: 10px 30px;
+  border-radius: var(--radius);
+  letter-spacing: 0.1em;
+  transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: rgba(201, 168, 76, 0.1);
+}
+
+
+/* ------------------------------------------
+ *  エラーメッセージ
+ * ------------------------------------------ */
+.form-error {
+  display: none;
+  margin-top: 16px;
+  padding: 12px;
+  background-color: rgba(139, 37, 37, 0.2);
+  border: 1px solid var(--accent-red);
+  border-radius: var(--radius);
+  color: #e8a0a0;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.form-error.visible {
+  display: block;
+}
+
+
+/* ------------------------------------------
+ *  レスポンシブ対応（モバイル最適化）
+ * ------------------------------------------ */
+
+/* スマートフォン（480px以下） */
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 1.4rem;
+    letter-spacing: 0.2em;
+  }
+
+  .site-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .form-card {
+    padding: 20px 16px;
+  }
+
+  .main-content {
+    padding: 20px 14px 40px;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 12px 16px;
+  }
+}
+
+/* 小さめのスマートフォン（360px以下） */
+@media (max-width: 360px) {
+  .site-title {
+    font-size: 1.2rem;
+  }
+}

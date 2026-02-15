@@ -23,7 +23,7 @@
         rel="stylesheet">
 
     <!-- スタイルシート（index.htmlと共通） -->
-    <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 
 <body>
@@ -51,17 +51,59 @@
             <p class="completion-sub">LINEで完了報告をお願いいたします</p>
         </div>
 
-        <!-- 🔔 次にやること -->
-        <div class="next-action">
-            <div class="next-action-label">▼ 次にやること ▼</div>
+        <!-- ステップ案内（情報商材風：ロック解除フロー） -->
+        <div class="completion-steps">
+            <!-- STEP 1: 完了 -->
+            <div class="step-item step-done">
+                <div class="step-status-icon">✅</div>
+                <div class="step-content">
+                    <span class="step-label">STEP 1</span>
+                    <span class="step-title">フォーム送信完了</span>
+                </div>
+            </div>
 
-            <!-- LINEボタン（すぐ押せる位置に） -->
-            <a href="https://line.me/R/oaMessage/@576iickk/?鑑定の申し込みが完了しました" class="line-btn">
+            <div class="step-connector">⬇</div>
+
+            <!-- STEP 2: 今ここ（強調） -->
+            <div class="step-item step-active">
+                <div class="step-status-icon">👉</div>
+                <div class="step-content">
+                    <span class="step-label">STEP 2</span>
+                    <span class="step-title">LINEで完了報告</span>
+                    <span class="step-desc">下のボタンをタップ！</span>
+                </div>
+                <div class="step-badge">あと1ステップ</div>
+            </div>
+
+            <div class="step-connector">⬇</div>
+
+            <!-- STEP 3: ロック中 -->
+            <div class="step-item step-locked">
+                <div class="step-status-icon">🔒</div>
+                <div class="step-content">
+                    <span class="step-label">STEP 3</span>
+                    <span class="step-title">限定動画プレゼント</span>
+                    <span class="step-desc">LINE報告後にロック解除</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔔 次にやること（最強調） -->
+        <div class="next-action">
+            <div class="finger-point">👇</div>
+            <div class="next-action-label">▼ タップして完了報告 ▼</div>
+
+            <!-- LINEボタン -->
+            <a href="https://line.me/R/oaMessage/@576iickk/?無料鑑定の申し込みが完了しました" class="line-btn">
                 <span class="line-btn-icon">💬</span>
                 <span class="line-btn-text">LINEで完了報告をする</span>
+                <span class="line-btn-sub">（自動でLINEが開きます）</span>
             </a>
 
-            <p class="next-action-hint">タップ後、LINEの送信ボタンを押すだけでOK！</p>
+            <p class="next-action-hint">
+                <span class="highlight-bg">表示されたメッセージを送信するだけ！</span><br>
+                <span class="small">※これを行わないと鑑定結果が届きません</span>
+            </p>
         </div>
 
         <!-- 🎬 限定動画の案内 -->

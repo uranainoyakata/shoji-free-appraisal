@@ -136,7 +136,8 @@ body {
 }
 
 .intro-text {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  /* より大きく読みやすく */
   line-height: 1.8;
   margin-bottom: 20px;
   text-align: justify;
@@ -155,9 +156,10 @@ body {
 
 .form-group label {
   display: block;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  /* 少し大きく */
   color: var(--text-gold);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 600;
 }
 
@@ -193,15 +195,21 @@ body {
   background-color: #fff;
   border: 2px inset #ccc;
   /* 昔のテキスト入力欄のような立体感 */
-  padding: 10px;
+  padding: 14px 10px;
+  /* タップエリアを確保 */
   color: #000;
   font-family: 'Noto Sans JP', sans-serif;
   /* 入力欄だけはゴシックで見やすく */
   font-size: 16px;
-  /* スマホでのズーム防止 */
+  /* 16px以上でiOSズームを防止 */
   border-radius: 0;
   /* 角丸なし */
   box-sizing: border-box;
+  min-height: 50px;
+  /* 押しやすい高さを確保 */
+  appearance: none;
+  /* デフォルトのスタイルをリセット */
+  -webkit-appearance: none;
 }
 
 .input-wrapper textarea {
@@ -262,9 +270,11 @@ body {
   color: #fff;
   border: 2px outset #fce883;
   /* 昔の立体的なボタン */
-  padding: 15px 10px;
+  padding: 18px 10px;
+  /* タップしやすいよう高さを拡大 */
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  /* ボタンテキスト拡大 */
   font-weight: bold;
   cursor: pointer;
   text-shadow: 1px 1px 2px #000;

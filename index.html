@@ -9,124 +9,140 @@
 
   <!-- OGP（SNSシェア時の表示設定） -->
   <meta property="og:title" content="しょうじの特別無料鑑定">
-  <meta property="og:description" content="無料鑑定のお申し込みはこちらから。">
+  <meta property="og:description" content="瀬戸内海からお届けする無料鑑定のお申し込みはこちらから。">
   <meta property="og:type" content="website">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: レトロ・和風な明朝体 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Shippori+Mincho:wght@400;600;800&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=retro">
 </head>
 
 <body>
-  <div class="background-effects">
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-    <div class="stars"></div>
+  <!-- 和風ヘッダー装飾 -->
+  <div class="header-decoration">
+    <div class="wave-pattern"></div>
   </div>
 
-  <div class="container fade-in-up">
+  <div class="container">
     <header class="header">
-      <div class="logo-mark">✧</div>
-      <h1 class="title">しょうじの特別<br>無料鑑定</h1>
-      <p class="subtitle">あなたを導く、運命の道しるべ</p>
+      <div class="header-inner">
+        <p class="subtitle">▼瀬戸内の海より、あなたの運命を導く▼</p>
+        <h1 class="title">【 しょうじの特別無料鑑定 】</h1>
+      </div>
     </header>
 
+    <div class="marquee-wrapper">
+      <marquee scrollamount="4">※只今、大変多くのご依頼をいただいております。お早めにお申し込みください※</marquee>
+    </div>
+
     <main class="main-content">
-      <div class="glass-card">
-        <div class="card-header">
-          <h2>鑑定のご案内</h2>
-          <p>以下のフォームにご入力ください。<br>鑑定結果はLINEにて丁寧にお届けいたします。</p>
+      <div class="retro-box">
+        <div class="box-header">
+          <h2>◆ 鑑定のご案内 ◆</h2>
         </div>
+        <div class="box-content">
+          <p class="intro-text">
+            ようこそお越しくださいました。<br>
+            以下の文の穴埋めをし、「鑑定を申し込む」の判子を押してください。<br>
+            鑑定結果は、折返し書状（LINE）にてお届けいたします。
+          </p>
 
-        <form id="appraisal-form" class="form-wrapper" novalidate>
-          <div class="form-group">
-            <label for="line-name">LINEのお名前 <span class="badge badge-required">必須</span></label>
-            <p class="input-hint">LINEに登録されているお名前をご入力ください</p>
-            <input type="text" id="line-name" name="line_name" placeholder="例：たろう" required autocomplete="name">
-          </div>
-
-          <div class="form-group">
-            <label for="nickname">お名前・ニックネーム <span class="badge badge-optional">任意</span></label>
-            <p class="input-hint">鑑定時にお呼びする名前（ニックネーム可）</p>
-            <input type="text" id="nickname" name="nickname" placeholder="例：タロウ" autocomplete="off">
-          </div>
-
-          <div class="form-group">
-            <label>生年月日 <span class="badge badge-required">必須</span></label>
-            <p class="input-hint">西暦でご選択ください</p>
-            <div class="select-group">
-              <div class="select-wrapper">
-                <select id="birthday-year" name="birthday_year" required>
-                  <option value="">年</option>
-                </select>
-                <span class="select-icon">▼</span>
+          <form id="appraisal-form" class="retro-form" novalidate>
+            <div class="form-group">
+              <label for="line-name">【LINEにお登録の御芳名】 <span class="badge badge-required">必須</span></label>
+              <div class="input-wrapper">
+                <input type="text" id="line-name" name="line_name" placeholder="例：たろう" required autocomplete="name">
               </div>
-              <span class="unit">年</span>
-
-              <div class="select-wrapper">
-                <select id="birthday-month" name="birthday_month" required>
-                  <option value="">月</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-                <span class="select-icon">▼</span>
-              </div>
-              <span class="unit">月</span>
-
-              <div class="select-wrapper">
-                <select id="birthday-day" name="birthday_day" required>
-                  <option value="">日</option>
-                </select>
-                <span class="select-icon">▼</span>
-              </div>
-              <span class="unit">日</span>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="concern">お悩み・ご相談内容 <span class="badge badge-required">必須</span></label>
-            <p class="input-hint">どのようなことでも、思いの丈をすべてお書きください。（1000文字以内）</p>
-            <textarea id="concern" name="concern" placeholder="最近、仕事のことで悩んでいます...&#10;誰にも言えない悩みでも、ここなら安心してお話しください。"
-              required rows="8"></textarea>
-          </div>
+            <div class="form-group">
+              <label for="nickname">【鑑定時にお呼びする御名】 <span class="badge badge-optional">任意</span></label>
+              <div class="input-wrapper">
+                <input type="text" id="nickname" name="nickname" placeholder="例：タロウ" autocomplete="off">
+              </div>
+            </div>
 
-          <div class="honeypot" aria-hidden="true">
-            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-          </div>
+            <div class="form-group">
+              <label>【御生年月日】 <span class="badge badge-required">必須</span></label>
+              <p class="input-hint">※西暦でご選択ください</p>
+              <div class="select-group">
+                <div class="select-wrapper">
+                  <select id="birthday-year" name="birthday_year" required>
+                    <option value="">--</option>
+                  </select>
+                  <span class="unit">年</span>
+                </div>
 
-          <input type="hidden" id="submitted-at" name="submitted_at">
+                <div class="select-wrapper">
+                  <select id="birthday-month" name="birthday_month" required>
+                    <option value="">--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <span class="unit">月</span>
+                </div>
 
-          <div class="submit-wrapper">
-            <button type="submit" id="submit-btn" class="btn-primary">
-              <span class="btn-text">鑑定を申し込む</span>
-              <span class="btn-icon">✨</span>
-            </button>
-            <div id="form-error" class="form-error" role="alert">送信に失敗しました。時間をおいて再度お試しください。</div>
-          </div>
-        </form>
+                <div class="select-wrapper">
+                  <select id="birthday-day" name="birthday_day" required>
+                    <option value="">--</option>
+                  </select>
+                  <span class="unit">日</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="concern">【お悩み・ご相談事】 <span class="badge badge-required">必須</span></label>
+              <p class="input-hint">どのような事でも、思いの丈をすべてお書きください。</p>
+              <div class="input-wrapper">
+                <textarea id="concern" name="concern" placeholder="最近、仕事のことで悩んでいます...&#10;誰にも言えない悩みでも、ここなら安心してお話しください。"
+                  required rows="8"></textarea>
+              </div>
+            </div>
+
+            <div class="honeypot" aria-hidden="true">
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <input type="hidden" id="submitted-at" name="submitted_at">
+
+            <div class="submit-wrapper">
+              <div class="submit-arrow">▼ ▼ ▼</div>
+              <button type="submit" id="submit-btn" class="btn-primary">
+                ■ 鑑定を申し込む ■
+              </button>
+              <div id="form-error" class="form-error" role="alert">送信に失敗しました。時間をおいて再度お試しください。</div>
+            </div>
+          </form>
+        </div>
       </div>
 
-      <p class="privacy-text">
-        🔒 ご入力いただいた情報は鑑定の目的にのみ使用いたします。<br>通信は暗号化され、安全に保護されています。
-      </p>
+      <div class="privacy-box">
+        <p>
+          【個人情報ノ保護ニツイテ】<br>
+          お預かりした大切な情報は鑑定のみに使用致します。<br>
+          厳重にお守りいたしますので、ご安心ください。
+        </p>
+      </div>
     </main>
+
     <footer class="footer">
-      <p>&copy; 2025 しょうじの特別無料鑑定</p>
+      <hr class="footer-line">
+      <p>(C) 2025 しょうじの特別無料鑑定</p>
     </footer>
   </div>
 

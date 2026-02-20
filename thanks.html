@@ -6,93 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>送信完了 | しょうじの特別無料鑑定</title>
     <meta name="description" content="無料鑑定のお申し込みが完了しました。">
-    <!-- Google Fonts -->
+
+    <!-- Google Fonts: レトロ・和風な明朝体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Shippori+Mincho:wght@400;600;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/style.css?v=retro">
 </head>
 
 <body>
+    <!-- 和風ヘッダー装飾 -->
+    <div class="header-decoration">
+        <div class="wave-pattern"></div>
+    </div>
 
-    <!-- ========================================
-       ヘッダー（index.htmlと共通デザイン）
-  ======================================== -->
-    <header class="site-header">
-        <h1 class="site-title">しょうじの特別無料鑑定</h1>
-        <p class="site-subtitle">― 無料鑑定受付 ―</p>
-    </header>
+    <div class="container">
+        <header class="header">
+            <div class="header-inner">
+                <p class="subtitle">▼瀬戸内の海より、あなたの運命を導く▼</p>
+                <h1 class="title">【 しょうじの特別無料鑑定 】</h1>
+            </div>
+        </header>
 
-    <main class="main-content">
-        <div class="status-banner">
-            <div class="status-icon pulse-animation">⏳</div>
-            <h2 class="status-title">あと少しで完了です</h2>
-            <p class="status-desc">LINEで完了報告をお願いいたします</p>
-        </div>
+        <main class="main-content">
+            <div class="status-banner">
+                <div class="blink-text">＼ あと少しで完了です ／</div>
+                <p class="status-desc">LINEにて<span class="highlight">完了の御報告</span>をお願い致します。</p>
+            </div>
 
-        <div class="glass-card flow-card">
-            <div class="step-item completed">
-                <div class="step-icon">✓</div>
-                <div class="step-text">
-                    <span class="step-label">STEP 1</span>
-                    <strong>フォーム送信完了</strong>
+            <div class="retro-box step-box">
+                <div class="box-header">
+                    <h2>◆ 現在のお手続き状況 ◆</h2>
+                </div>
+                <div class="box-content">
+                    <ul class="step-list">
+                        <li class="step-item completed">
+                            <span class="step-mark">済</span>
+                            <span class="step-text">壱. フォームの送信</span>
+                        </li>
+                        <li class="step-arrow">↓ ↓ ↓</li>
+                        <li class="step-item current">
+                            <span class="step-mark blink">今</span>
+                            <span class="step-text">弐. LINEで完了の御報告</span>
+                        </li>
+                        <li class="step-arrow">↓ ↓ ↓</li>
+                        <li class="step-item locked">
+                            <span class="step-mark">鍵</span>
+                            <span class="step-text">参. 龍神開運護符の授与（2枚）</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="step-line"></div>
+            <div class="action-card retro-box border-pulse">
+                <div class="finger-point">👇👇👇</div>
+                <h3 class="action-title">▼ 此処をタップして御報告 ▼</h3>
 
-            <div class="step-item current">
-                <div class="step-icon">!</div>
-                <div class="step-text">
-                    <span class="step-label">STEP 2</span>
-                    <strong>LINEで完了報告</strong>
+                <div class="btn-wrapper">
+                    <a href="https://line.me/R/oaMessage/@576iickk/?無料鑑定送信。このまま送信ボタンを押してください。" class="btn-line">
+                        ■ LINEで完了報告をする ■
+                    </a>
                 </div>
-                <div class="step-badge">あと1ステップ</div>
-            </div>
 
-            <div class="step-line"></div>
-
-            <div class="step-item locked">
-                <div class="step-icon">🔒</div>
-                <div class="step-text">
-                    <span class="step-label">STEP 3</span>
-                    <strong>龍神開運護符 2枚</strong>
+                <div class="action-hint">
+                    <p class="hint-main">表示された文面をそのまま送信してください。</p>
+                    <p class="text-alert">※此の御手続きが無いと鑑定結果が届きません。</p>
                 </div>
             </div>
-        </div>
 
-        <div class="action-card glass-card gold-border">
-            <div class="finger-point">👇</div>
-            <h3 class="action-title">▼ タップして完了報告 ▼</h3>
+            <div class="reward-box retro-box">
+                <div class="box-content text-center">
+                    <div class="reward-icon">🌊🐉</div>
+                    <h4 class="reward-title">完了報告の御礼：<span class="text-gold">龍神開運護符 弐枚</span></h4>
+                    <p class="reward-desc">御報告を頂いた方へ、瀬戸内の波に乗る特別な開運の御札をLINEにてお渡しいたします。</p>
+                </div>
+            </div>
 
-            <a href="https://line.me/R/oaMessage/@576iickk/?無料鑑定送信。このまま送信ボタンを押してください。" class="btn-line">
-                <span class="line-icon">💬</span>
-                <span class="line-text">LINEで完了報告をする</span>
-            </a>
+            <div class="privacy-box text-center">
+                ※ 鑑定結果はLINEの御文にてお届け致します。<br>
+                ※ 鑑定には数日、お時間を頂戴いたします事をご了承ください。
+            </div>
 
-            <p class="action-hint">
-                <strong>表示されたメッセージをそのまま送信するだけ！</strong><br>
-                <span class="text-alert">※これを行わないと鑑定結果が届きません</span>
-            </p>
-        </div>
+        </main>
 
-        <div class="reward-box glass-card">
-            <div class="reward-icon">🐲</div>
-            <h4 class="reward-title">完了報告で<span class="text-gold">龍神開運護符 2枚</span>をプレゼント！</h4>
-            <p class="reward-desc">無料鑑定送信後、特別な開運護符をLINEにてお届けいたします。</p>
-        </div>
-
-        <div class="privacy-text text-center">
-            ※ 鑑定結果はLINEにてお届けいたします。<br>
-            ※ 鑑定には数日お時間をいただく場合がございます。
-        </div>
-
-    </main>
-    <footer class="footer">
-        <p>&copy; 2025 しょうじの特別無料鑑定</p>
-    </footer>
+        <footer class="footer">
+            <hr class="footer-line">
+            <p>(C) 2025 しょうじの特別無料鑑定</p>
+        </footer>
     </div>
 </body>
 

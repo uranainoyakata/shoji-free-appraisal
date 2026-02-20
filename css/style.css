@@ -1,30 +1,32 @@
 /* ============================================
- * モダン・グラスモーフィズムデザイン
- * しょうじの特別無料鑑定
+ * ガラケー風・和風・海（しょうじ先生）
+ * しょうじの特別無料鑑定 -> しょうじの特別無料鑑定
  * ============================================ */
 
 :root {
-  --bg-dark: #07051a;
-  --bg-gradient-1: #1a0b2e;
-  --bg-gradient-2: #281545;
-  --bg-gradient-3: #0f173b;
+  /* 瀬戸内海の夜明け・和風の色使い */
+  --bg-dark-blue: #0A1128;
+  /* 深い海の色 */
+  --bg-pattern: #17244B;
 
-  --gold-primary: #d4af37;
-  --gold-light: #f9e596;
-  --gold-dark: #9e7f1c;
+  --gold-primary: #D4AF37;
+  /* 金箔のような金 */
+  --gold-light: #FCE883;
+  --gold-dark: #A67C00;
 
-  --text-main: #f0f0fa;
-  --text-muted: #a4a4c1;
+  --red-accent: #B22222;
+  /* 鳥居のような朱・エンジ */
+  --red-light: #FF4040;
 
-  --glass-bg: rgba(25, 20, 45, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --text-main: #FFFFFF;
+  --text-gold: #FCE883;
 
-  --font-serif: 'Noto Serif JP', serif;
-  --font-sans: 'Noto Sans JP', sans-serif;
+  /* レトロ明朝体 */
+  --font-serif: 'Shippori Mincho', 'Hina Mincho', serif;
+  --font-sans: 'Shippori Mincho', 'Hina Mincho', serif;
+  /* 全て明朝体に寄せる */
 
-  --line-color: #06C755;
-  --line-hover: #05a647;
+  --line-color: #00B900;
 }
 
 * {
@@ -34,289 +36,196 @@
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-dark);
+  font-family: var(--font-serif);
+  background-color: var(--bg-dark-blue);
   color: var(--text-main);
   line-height: 1.6;
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
+  font-size: 16px;
+  /* 青海波（せいがいは）風のシンプルな背景パターン（CSSで擬似的に表現） */
+  background-image:
+    radial-gradient(circle at 100% 150%, var(--bg-dark-blue) 24%, var(--text-gold) 24%, var(--text-gold) 28%, var(--bg-dark-blue) 28%, var(--bg-dark-blue) 36%, var(--text-gold) 36%, var(--text-gold) 40%, transparent 40%, transparent),
+    radial-gradient(circle at 0 150%, var(--bg-dark-blue) 24%, var(--text-gold) 24%, var(--text-gold) 28%, var(--bg-dark-blue) 28%, var(--bg-dark-blue) 36%, var(--text-gold) 36%, var(--text-gold) 40%, transparent 40%, transparent),
+    radial-gradient(circle at 50% 100%, var(--gold-dark) 10%, var(--text-gold) 10%, var(--text-gold) 14%, var(--bg-dark-blue) 14%, var(--bg-dark-blue) 22%, var(--text-gold) 22%, var(--text-gold) 26%, transparent 26%, transparent);
+  background-size: 50px 25px;
+  background-position: 0 0, 0 0, 25px 0;
+  background-blend-mode: overlay;
+  /* パターンを目立たせすぎないように */
 }
 
-/* --- 背景エフェクト --- */
-.background-effects {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
-  background-size: 200% 200%;
-  animation: cosmicGradient 15s ease infinite alternate;
-  overflow: hidden;
-}
-
-@keyframes cosmicGradient {
-  0% {
-    background-position: 0% 0%;
-  }
-
-  100% {
-    background-position: 100% 100%;
-  }
-}
-
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.5;
-  animation: floatOrb 10s infinite alternate ease-in-out;
-}
-
-.orb-1 {
-  width: 400px;
-  height: 400px;
-  background: rgba(132, 66, 255, 0.2);
-  top: -10%;
-  left: -10%;
-}
-
-.orb-2 {
-  width: 500px;
-  height: 500px;
-  background: rgba(212, 175, 55, 0.15);
-  bottom: -20%;
-  right: -10%;
-  animation-delay: -5s;
-}
-
-@keyframes floatOrb {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  100% {
-    transform: translate(30px, 50px) scale(1.1);
-  }
-}
-
-/* --- レイアウト --- */
+/* ガラケー風のコンテナ */
 .container {
-  max-width: 600px;
+  max-width: 480px;
+  /* ガラケー画面やスマホ画面を意識した少し狭めの幅 */
   margin: 0 auto;
-  padding: 40px 20px 60px;
-}
-
-/* --- アニメーション --- */
-.fade-in-up {
-  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  background-color: var(--bg-dark-blue);
+  /* コンテンツ部分は塗りつぶして読みやすく */
+  min-height: 100vh;
+  padding-bottom: 40px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  border-left: 2px solid var(--gold-dark);
+  border-right: 2px solid var(--gold-dark);
 }
 
 /* --- ヘッダー --- */
+.header-decoration {
+  background-color: var(--gold-dark);
+  height: 5px;
+  width: 100%;
+}
+
 .header {
   text-align: center;
-  margin-bottom: 40px;
-}
-
-.logo-mark {
-  font-size: 2rem;
-  color: var(--gold-primary);
+  background-color: var(--red-accent);
+  padding: 15px 5px;
+  border-bottom: 3px double var(--gold-primary);
   margin-bottom: 10px;
-  animation: spinSlow 10s linear infinite;
-  display: inline-block;
-}
-
-@keyframes spinSlow {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.title {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: transparent;
-  background: linear-gradient(to right, var(--gold-light), var(--gold-primary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  letter-spacing: 0.1em;
-  margin-bottom: 10px;
-  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
 }
 
 .subtitle {
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  color: #fff;
+  margin-bottom: 5px;
 }
 
-/* --- グラスモーフィズム カード --- */
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 30px 24px;
-  box-shadow: var(--glass-shadow);
-  margin-bottom: 30px;
+.title {
+  font-size: 1.6rem;
+  color: var(--text-gold);
+  font-weight: 800;
+  text-shadow: 1px 1px 2px #000;
 }
 
-.card-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.card-header h2 {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
+/* --- マーキー風・お知らせ --- */
+.marquee-wrapper {
+  background-color: #000;
   color: var(--gold-light);
-  margin-bottom: 12px;
-  letter-spacing: 0.1em;
+  padding: 5px 0;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--gold-dark);
+  border-bottom: 1px solid var(--gold-dark);
+  margin-bottom: 20px;
 }
 
-.card-header p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+/* --- 共通のレトロボックス（昔のテーブルレイアウト風） --- */
+.main-content {
+  padding: 0 15px;
+}
+
+.retro-box {
+  background-color: #000;
+  border: 3px double var(--gold-primary);
+  margin-bottom: 25px;
+  border-radius: 0;
+  /* 角丸なしのレトロ感 */
+}
+
+.box-header {
+  background-color: var(--gold-dark);
+  color: #fff;
+  text-align: center;
+  padding: 8px 5px;
+  border-bottom: 1px solid var(--gold-light);
+}
+
+.box-header h2 {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.box-content {
+  padding: 15px;
+}
+
+.intro-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
 }
 
 /* --- フォーム --- */
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed var(--gold-dark);
+  padding-bottom: 15px;
+}
+
+.form-group:last-child {
+  border-bottom: none;
 }
 
 .form-group label {
-  display: flex;
-  align-items: center;
-  font-family: var(--font-serif);
+  display: block;
   font-size: 1rem;
-  color: var(--text-main);
+  color: var(--text-gold);
   margin-bottom: 8px;
   font-weight: 600;
 }
 
 .badge {
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: 12px;
-  margin-left: 10px;
-  font-family: var(--font-sans);
-  font-weight: bold;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  vertical-align: middle;
+  border-radius: 2px;
 }
 
 .badge-required {
-  background: rgba(220, 53, 69, 0.2);
-  color: #ff6b81;
-  border: 1px solid rgba(255, 107, 129, 0.3);
+  background-color: var(--red-accent);
+  color: #fff;
+  border: 1px solid var(--red-light);
 }
 
 .badge-optional {
-  background: rgba(164, 164, 193, 0.2);
-  color: var(--text-muted);
-  border: 1px solid rgba(164, 164, 193, 0.3);
+  background-color: #555;
+  color: #ddd;
+  border: 1px solid #777;
 }
 
 .input-hint {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: #ccc;
   margin-bottom: 8px;
 }
 
-input[type="text"],
-textarea,
-select {
+.input-wrapper input[type="text"],
+.input-wrapper textarea,
+.select-wrapper select {
   width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  padding: 14px 16px;
-  color: #fff;
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
+  background-color: #fff;
+  border: 2px inset #ccc;
+  /* 昔のテキスト入力欄のような立体感 */
+  padding: 10px;
+  color: #000;
+  font-family: 'Noto Sans JP', sans-serif;
+  /* 入力欄だけはゴシックで見やすく */
+  font-size: 16px;
+  /* スマホでのズーム防止 */
+  border-radius: 0;
+  /* 角丸なし */
   box-sizing: border-box;
 }
 
-input[type="text"]:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-  background: rgba(0, 0, 0, 0.6);
-}
-
-textarea {
+.input-wrapper textarea {
+  min-height: 150px;
   resize: vertical;
-  min-height: 120px;
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-/* selectのオプション見やすく */
-option {
-  background: var(--bg-dark);
-  color: white;
-}
-
+/* selectは横並びに */
 .select-group {
   display: flex;
-  gap: 15px;
   align-items: center;
+  gap: 5px;
 }
 
 .select-wrapper {
-  position: relative;
   flex: 1;
 }
 
-.select-wrapper select {
-  appearance: none;
-  -webkit-appearance: none;
-  padding-right: 30px;
-  cursor: pointer;
-}
-
-.select-icon {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--gold-primary);
-  font-size: 0.8rem;
-  pointer-events: none;
-}
-
 .unit {
-  color: var(--text-muted);
   font-size: 0.9rem;
-  white-space: nowrap;
+  color: #fff;
 }
+
+/* selectの矢印はそのままでOSネイティブを使わせる（使い勝手重視） */
 
 .honeypot {
   position: absolute;
@@ -325,404 +234,318 @@ option {
 
 /* --- ボタン --- */
 .submit-wrapper {
-  margin-top: 40px;
+  text-align: center;
+  margin-top: 25px;
 }
 
-.btn-primary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-  color: #000;
-  border: none;
-  padding: 18px 20px;
-  border-radius: 12px;
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-  position: relative;
-  overflow: hidden;
+.submit-arrow {
+  color: var(--gold-light);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  animation: blink 1s infinite alternate;
 }
 
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-  transform: skewX(-25deg);
-  animation: shineBtn 3s infinite;
-}
-
-@keyframes shineBtn {
+@keyframes blink {
   0% {
-    left: -100%;
-  }
-
-  20% {
-    left: 200%;
+    opacity: 0.3;
   }
 
   100% {
-    left: 200%;
+    opacity: 1;
   }
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  background: linear-gradient(to bottom, #d4af37, #8b6508);
+  color: #fff;
+  border: 2px outset #fce883;
+  /* 昔の立体的なボタン */
+  padding: 15px 10px;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px #000;
 }
 
 .btn-primary:active {
-  transform: translateY(1px);
+  border: 2px inset #fce883;
+  background: linear-gradient(to bottom, #8b6508, #d4af37);
+  padding-top: 17px;
+  padding-bottom: 13px;
 }
 
 .btn-primary:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-.btn-primary:disabled::after {
-  display: none;
+  background: #555;
+  border-color: #777;
+  color: #aaa;
 }
 
 .form-error {
   display: none;
   margin-top: 15px;
-  background: rgba(220, 53, 69, 0.15);
-  border: 1px solid rgba(220, 53, 69, 0.3);
-  color: #ff8a98;
-  padding: 12px;
-  border-radius: 8px;
-  text-align: center;
+  background: #000;
+  border: 2px dotted red;
+  color: #ff4040;
+  padding: 10px;
   font-size: 0.9rem;
 }
 
 .form-error.visible {
   display: block;
-  animation: fadeIn 0.3s;
 }
 
-/* --- Thanks ページ --- */
+/* --- 個人情報の箱 --- */
+.privacy-box {
+  border: 1px solid #555;
+  background-color: #111;
+  padding: 15px;
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* --- フッター --- */
+.footer {
+  text-align: center;
+  color: var(--gold-dark);
+  font-size: 0.8rem;
+  padding-top: 10px;
+}
+
+.footer-line {
+  border: 0;
+  border-top: 1px dashed var(--gold-dark);
+  margin-bottom: 15px;
+}
+
+
+/* =======================================================
+ *  Thanks ページ用スタイル
+ * ======================================================= */
+
 .status-banner {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 20px 0;
 }
 
-.status-icon {
-  font-size: 3.5rem;
+.blink-text {
+  color: var(--red-light);
+  font-size: 1.3rem;
+  font-weight: bold;
+  animation: blink 1s infinite alternate;
   margin-bottom: 10px;
 }
 
-.pulse-animation {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-.status-title {
-  font-family: var(--font-serif);
-  color: var(--gold-light);
-  font-size: 1.8rem;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
-}
-
 .status-desc {
-  color: var(--text-muted);
+  font-size: 1rem;
 }
 
-.flow-card {
-  padding: 20px;
+.highlight {
+  color: var(--text-gold);
+  border-bottom: 1px solid var(--text-gold);
+}
+
+.step-box {
+  margin-bottom: 20px;
+}
+
+.step-list {
+  list-style: none;
+  padding: 0;
 }
 
 .step-item {
+  background-color: #111;
+  border: 1px solid #333;
+  padding: 12px;
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 15px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid transparent;
-  transition: all 0.3s;
+  gap: 10px;
+}
+
+.step-arrow {
+  text-align: center;
+  color: var(--gold-dark);
+  padding: 5px 0;
+  font-size: 0.9rem;
 }
 
 .step-item.completed {
-  border-color: rgba(6, 199, 85, 0.3);
+  color: #aaa;
 }
 
-.step-item.completed .step-icon {
-  background: rgba(6, 199, 85, 0.2);
-  color: #06C755;
-  border-radius: 50%;
+.step-item.completed .step-mark {
+  background: #333;
+  color: #aaa;
 }
 
 .step-item.current {
-  border-color: var(--gold-primary);
-  background: rgba(212, 175, 55, 0.1);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-  position: relative;
-  transform: scale(1.02);
-}
-
-.step-item.current .step-icon {
-  background: var(--gold-primary);
-  color: #000;
-  border-radius: 50%;
-}
-
-.step-badge {
-  position: absolute;
-  top: -10px;
-  right: 10px;
-  background: #ff4757;
-  color: white;
-  font-size: 0.7rem;
+  border: 1px solid var(--gold-primary);
+  background-color: rgba(212, 175, 55, 0.1);
+  color: #fff;
   font-weight: bold;
-  padding: 3px 10px;
-  border-radius: 10px;
-  animation: bounce 2s infinite;
 }
 
-@keyframes bounce {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
+.step-item.current .step-mark {
+  background: var(--red-accent);
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 .step-item.locked {
   opacity: 0.5;
+  color: #777;
 }
 
-.step-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  flex-shrink: 0;
+.step-item.locked .step-mark {
+  background: #222;
+  color: #555;
 }
 
-.step-text {
-  flex: 1;
+.step-mark {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  border: 1px solid #555;
 }
 
-.step-label {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-weight: bold;
+.border-pulse {
+  border: 3px dashed var(--gold-primary);
+  animation: borderBlink 1.5s infinite alternate;
 }
 
-.step-text strong {
-  font-size: 1.1rem;
-  color: #fff;
-}
+@keyframes borderBlink {
+  0% {
+    border-color: var(--gold-dark);
+  }
 
-.step-line {
-  height: 20px;
-  border-left: 2px dashed rgba(255, 255, 255, 0.2);
-  margin-left: 34px;
-}
-
-.gold-border {
-  border: 1px solid var(--gold-primary);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+  100% {
+    border-color: var(--gold-light);
+  }
 }
 
 .action-card {
   text-align: center;
-  padding: 40px 20px;
-  position: relative;
-}
-
-.finger-point {
-  font-size: 2.5rem;
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: pointDown 1s infinite alternate;
-  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.5));
-}
-
-@keyframes pointDown {
-  from {
-    top: -25px;
-  }
-
-  to {
-    top: -10px;
-  }
+  padding: 25px 15px;
+  margin-bottom: 20px;
 }
 
 .action-title {
-  color: var(--gold-primary);
-  margin-bottom: 24px;
-  font-size: 1.2rem;
-  font-family: var(--font-serif);
+  color: var(--text-gold);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.finger-point {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  animation: moveHand 1s infinite alternate;
+}
+
+@keyframes moveHand {
+  from {
+    transform: translateY(-5px);
+  }
+
+  to {
+    transform: translateY(5px);
+  }
+}
+
+.btn-wrapper {
+  margin-bottom: 20px;
 }
 
 .btn-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: linear-gradient(135deg, #06C755, #00B900);
-  color: white;
-  text-decoration: none;
-  padding: 16px 20px;
-  border-radius: 12px;
-  font-size: 1.15rem;
+  display: inline-block;
+  width: 100%;
+  background-color: var(--line-color);
+  color: #fff;
+  border: 2px outset #5ff15f;
+  padding: 16px 10px;
+  font-size: 1.2rem;
   font-weight: bold;
-  box-shadow: 0 6px 0 #008f00, 0 10px 20px rgba(6, 199, 85, 0.3);
-  transition: all 0.1s;
-  margin-bottom: 24px;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px #000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 .btn-line:active {
-  box-shadow: 0 2px 0 #008f00, 0 5px 10px rgba(6, 199, 85, 0.3);
-  transform: translateY(4px);
+  border: 2px inset #5ff15f;
+  background-color: #009900;
+  transform: translateY(2px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.line-icon {
-  font-size: 1.4rem;
-}
-
-.action-hint {
+.hint-main {
   font-size: 0.95rem;
-  line-height: 1.6;
+  color: #fff;
+  margin-bottom: 5px;
 }
 
 .text-alert {
-  color: #ff6b81;
-  font-size: 0.8rem;
-  display: block;
-  margin-top: 5px;
-}
-
-.reward-box {
-  text-align: center;
-  border: 1px dashed rgba(212, 175, 55, 0.5);
-  background: rgba(212, 175, 55, 0.05);
+  color: var(--red-light);
+  font-size: 0.85rem;
 }
 
 .reward-icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 5px;
 }
 
 .reward-title {
   font-size: 1.1rem;
-  margin-bottom: 8px;
-  font-family: var(--font-serif);
+  margin-bottom: 10px;
 }
 
 .text-gold {
-  color: var(--gold-light);
-  font-weight: bold;
+  color: var(--text-gold);
 }
 
 .reward-desc {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #ccc;
+  line-height: 1.6;
 }
 
 .text-center {
   text-align: center;
 }
 
-/* --- フッター等 --- */
-.privacy-text {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  line-height: 1.8;
-  margin: 20px 0;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid var(--glass-border);
-}
-
-.footer {
-  text-align: center;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.3);
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* モバイル対応 */
+/* スマホでの細かな調整 */
 @media (max-width: 480px) {
-  .title {
-    font-size: 1.7rem;
-  }
-
-  .glass-card {
-    padding: 24px 16px;
-  }
-
-  .btn-primary {
-    font-size: 1.05rem;
-  }
-
-  .btn-line {
-    font-size: 1.05rem;
-  }
-
-  .select-group {
-    flex-direction: row;
-    gap: 5px;
-  }
-
-  .unit {
-    font-size: 0.8rem;
-    display: inline-block;
-  }
-}
-
-@media (max-width: 360px) {
   .title {
     font-size: 1.4rem;
   }
 
   .btn-primary {
-    padding: 14px 16px;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .btn-line {
-    padding: 14px 16px;
-    font-size: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .box-content {
+    padding: 10px;
+  }
+
+  .step-text {
+    font-size: 0.9rem;
   }
 }

@@ -3,218 +3,134 @@
 
 <head>
   <meta charset="UTF-8">
-  <!--
-    =============================================
-    無料鑑定受付フォーム — index.html
-    =============================================
-    【役割】
-    公式LINEから誘導される鑑定申し込みフォーム。
-    名前・生年月日・お悩みを入力して送信する。
-    
-    【技術構成】
-    - 静的HTML（GitHub Pages対応）
-    - フォーム送信は js/form.js で処理
-    - 送信先は Google Apps Script → スプレッドシート
-    
-    【将来の拡張ポイント】
-    - フォーム送信先をSupabase/Firebaseに差し替え可能
-    - 差し替え時は js/form.js の FORM_CONFIG を変更
-  -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- SEO基本設定 -->
   <title>しょうじの特別無料鑑定</title>
-  <meta name="description" content="無料鑑定のお申し込みフォームです。お名前・生年月日・お悩みをご入力ください。LINEにて鑑定結果をお届けいたします。">
+  <meta name="description" content="無料鑑定のお申し込みフォームです。LINEにて鑑定結果をお届けいたします。">
 
   <!-- OGP（SNSシェア時の表示設定） -->
   <meta property="og:title" content="しょうじの特別無料鑑定">
   <meta property="og:description" content="無料鑑定のお申し込みはこちらから。">
   <meta property="og:type" content="website">
 
-  <!-- Google Fonts：明朝体（Noto Serif JP）とゴシック体（Noto Sans JP） -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap"
     rel="stylesheet">
 
-  <!-- スタイルシート -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <div class="background-effects">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="stars"></div>
+  </div>
 
-  <!-- ========================================
-       ヘッダー
-       サービス名と簡単な説明
-  ======================================== -->
-  <header class="site-header">
-    <h1 class="site-title">しょうじの特別無料鑑定</h1>
-    <p class="site-subtitle">― 無料鑑定受付 ―</p>
-  </header>
+  <div class="container fade-in-up">
+    <header class="header">
+      <div class="logo-mark">✧</div>
+      <h1 class="title">しょうじの特別<br>無料鑑定</h1>
+      <p class="subtitle">あなたを導く、運命の道しるべ</p>
+    </header>
 
-  <!-- 和風装飾ライン -->
-  <div class="decorative-line">◆ ◇ ◆</div>
-
-  <!-- ========================================
-       メインコンテンツ
-  ======================================== -->
-  <main class="main-content">
-
-    <!-- 説明文セクション -->
-    <section class="intro-section">
-      <h2>鑑定のご案内</h2>
-      <p>
-        この度は無料鑑定にお申し込みいただき、<br>
-        誠にありがとうございます。<br><br>
-        以下のフォームにご入力のうえ、<br>
-        送信ボタンを押してください。<br>
-        鑑定結果はLINEにてお届けいたします。
-      </p>
-    </section>
-
-    <!-- 和風装飾ライン -->
-    <div class="decorative-line">― ― ―</div>
-
-    <!-- ========================================
-         鑑定申し込みフォーム
-         
-         【フォームの仕組み】
-         1. ユーザーが入力して送信ボタンを押す
-         2. js/form.js がデータを収集
-         3. Google Apps Script に JSON で送信
-         4. スプレッドシートにデータが記録される
-         5. thanks.html に遷移
-         
-         【将来ここをDBに置き換える】
-         フォーム送信処理は form.js に集約されている。
-         DB移行時は form.js の FORM_CONFIG と
-         submitForm() 関数を変更するだけでOK。
-    ======================================== -->
-    <form id="appraisal-form" class="form-card" novalidate>
-
-      <!-- === LINEの名前（必須） === -->
-      <div class="form-group">
-        <label for="line-name">
-          LINEのお名前
-          <span class="required-badge">必須</span>
-        </label>
-        <span class="form-hint">LINEに登録されているお名前をご入力ください</span>
-        <input type="text" id="line-name" name="line_name" placeholder="例：たろう" required autocomplete="name">
-      </div>
-
-      <!-- === ニックネーム（任意） === -->
-      <div class="form-group">
-        <label for="nickname">
-          お名前・ニックネーム
-        </label>
-        <span class="form-hint">鑑定時にお呼びする名前（ニックネーム可）</span>
-        <input type="text" id="nickname" name="nickname" placeholder="例：タロウ、太郎 など" autocomplete="off">
-      </div>
-
-      <!-- === 生年月日（必須・年/月/日 個別入力） === -->
-      <div class="form-group">
-        <label>
-          生年月日
-          <span class="required-badge">必須</span>
-        </label>
-        <span class="form-hint">西暦でご選択ください</span>
-        <div class="birthday-group">
-          <!-- 年 -->
-          <div class="birthday-field">
-            <select id="birthday-year" name="birthday_year" required>
-              <option value="">年</option>
-              <!-- JSで動的に生成 -->
-            </select>
-            <span class="birthday-unit">年</span>
-          </div>
-          <!-- 月 -->
-          <div class="birthday-field">
-            <select id="birthday-month" name="birthday_month" required>
-              <option value="">月</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-            <span class="birthday-unit">月</span>
-          </div>
-          <!-- 日 -->
-          <div class="birthday-field">
-            <select id="birthday-day" name="birthday_day" required>
-              <option value="">日</option>
-              <!-- JSで動的に生成（1〜31） -->
-            </select>
-            <span class="birthday-unit">日</span>
-          </div>
+    <main class="main-content">
+      <div class="glass-card">
+        <div class="card-header">
+          <h2>鑑定のご案内</h2>
+          <p>以下のフォームにご入力ください。<br>鑑定結果はLINEにて丁寧にお届けいたします。</p>
         </div>
+
+        <form id="appraisal-form" class="form-wrapper" novalidate>
+          <div class="form-group">
+            <label for="line-name">LINEのお名前 <span class="badge badge-required">必須</span></label>
+            <p class="input-hint">LINEに登録されているお名前をご入力ください</p>
+            <input type="text" id="line-name" name="line_name" placeholder="例：たろう" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="nickname">お名前・ニックネーム <span class="badge badge-optional">任意</span></label>
+            <p class="input-hint">鑑定時にお呼びする名前（ニックネーム可）</p>
+            <input type="text" id="nickname" name="nickname" placeholder="例：タロウ" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label>生年月日 <span class="badge badge-required">必須</span></label>
+            <p class="input-hint">西暦でご選択ください</p>
+            <div class="select-group">
+              <div class="select-wrapper">
+                <select id="birthday-year" name="birthday_year" required>
+                  <option value="">年</option>
+                </select>
+                <span class="select-icon">▼</span>
+              </div>
+              <span class="unit">年</span>
+
+              <div class="select-wrapper">
+                <select id="birthday-month" name="birthday_month" required>
+                  <option value="">月</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+                <span class="select-icon">▼</span>
+              </div>
+              <span class="unit">月</span>
+
+              <div class="select-wrapper">
+                <select id="birthday-day" name="birthday_day" required>
+                  <option value="">日</option>
+                </select>
+                <span class="select-icon">▼</span>
+              </div>
+              <span class="unit">日</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="concern">お悩み・ご相談内容 <span class="badge badge-required">必須</span></label>
+            <p class="input-hint">どのようなことでも、思いの丈をすべてお書きください。（1000文字以内）</p>
+            <textarea id="concern" name="concern" placeholder="最近、仕事のことで悩んでいます...&#10;誰にも言えない悩みでも、ここなら安心してお話しください。"
+              required rows="8"></textarea>
+          </div>
+
+          <div class="honeypot" aria-hidden="true">
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <input type="hidden" id="submitted-at" name="submitted_at">
+
+          <div class="submit-wrapper">
+            <button type="submit" id="submit-btn" class="btn-primary">
+              <span class="btn-text">鑑定を申し込む</span>
+              <span class="btn-icon">✨</span>
+            </button>
+            <div id="form-error" class="form-error" role="alert">送信に失敗しました。時間をおいて再度お試しください。</div>
+          </div>
+        </form>
       </div>
 
-      <!-- === お悩み（必須・複数行） === -->
-      <div class="form-group">
-        <label for="concern">
-          お悩み・ご相談内容
-          <span class="required-badge">必須</span>
-        </label>
-        <span class="form-hint">どのようなことでも、思いの丈をすべてお書きください。（1000文字以内）</span>
-        <textarea id="concern" name="concern" placeholder="例：最近、仕事のことで悩んでいます…&#10;誰にも言えない悩みでも、ここなら安心してお話しください。" required
-          rows="12"></textarea>
-      </div>
+      <p class="privacy-text">
+        🔒 ご入力いただいた情報は鑑定の目的にのみ使用いたします。<br>通信は暗号化され、安全に保護されています。
+      </p>
+    </main>
+    <footer class="footer">
+      <p>&copy; 2025 しょうじの特別無料鑑定</p>
+    </footer>
+  </div>
 
-      <!-- === スパム対策：ハニーポットフィールド ===
-           このフィールドは画面に表示されない。
-           botが自動入力した場合、送信を拒否する。
-           人間のユーザーには見えないので影響なし。
-      -->
-      <div class="honeypot-field" aria-hidden="true">
-        <label for="website">ウェブサイト（入力しないでください）</label>
-        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-      </div>
-
-      <!-- === タイムスタンプ（hidden） ===
-           送信時に js/form.js が自動的にセットする。
-           いつ送信されたかを記録するための隠しフィールド。
-      -->
-      <input type="hidden" id="submitted-at" name="submitted_at">
-
-      <!-- 送信ボタン -->
-      <button type="submit" class="submit-btn" id="submit-btn">
-        鑑定を申し込む
-      </button>
-
-      <!-- エラーメッセージ表示エリア -->
-      <div id="form-error" class="form-error" role="alert">
-        送信に失敗しました。時間をおいて再度お試しください。
-      </div>
-    </form>
-
-    <!-- 個人情報の取り扱いについて -->
-    <div class="privacy-notice">
-      ご入力いただいた情報は、鑑定の目的にのみ使用いたします。<br>
-      第三者への提供・公開は一切いたしません。<br>
-      通信はHTTPSにより暗号化されています。
-    </div>
-
-  </main>
-
-  <!-- ========================================
-       フッター
-  ======================================== -->
-  <footer class="site-footer">
-    &copy; 2025 しょうじの特別無料鑑定
-  </footer>
-
-  <!-- フォーム送信スクリプト -->
   <script src="js/form.js"></script>
-
 </body>
 
 </html>

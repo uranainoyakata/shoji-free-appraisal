@@ -122,7 +122,11 @@ function saveToSpreadsheet(data) {
     data.nickname || '',                        // ニックネーム
     data.birthday || '',                        // 生年月日
     data.concern || '',                         // お悩み
-    '未鑑定',                                    // 初期ステータス
+    '',                                         // ステータス（チェックボックスが入るため空文字）
     new Date().toLocaleString('ja-JP')          // サーバー側の記録日時
   ]);
+
+  // ステータス列（G列=7列目）にチェックボックスを挿入
+  var row = sheet.getLastRow();
+  sheet.getRange(row, 7).insertCheckboxes();
 }

@@ -3,27 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <!--
-    =============================================
-    送信完了ページ — thanks.html
-    =============================================
-    【役割】
-    フォーム送信成功後にリダイレクトされるページ。
-    ユーザーに送信完了と今後の流れを案内する。
-  -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>送信完了 | しょうじの特別無料鑑定</title>
     <meta name="description" content="無料鑑定のお申し込みが完了しました。">
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap"
         rel="stylesheet">
-
-    <!-- スタイルシート（index.htmlと共通） -->
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -36,101 +25,75 @@
         <p class="site-subtitle">― 無料鑑定受付 ―</p>
     </header>
 
-    <!-- 和風装飾ライン -->
-    <div class="decorative-line">◆ ◇ ◆</div>
-
-    <!-- ========================================
-       送信完了メッセージ
-  ======================================== -->
-    <main class="thanks-content">
-
-        <!-- ⏳ あと少しバナー -->
-        <div class="completion-banner">
-            <div class="completion-check">⏳</div>
-            <h1>あと少しで<br>完了です</h1>
-            <p class="completion-sub">LINEで完了報告をお願いいたします</p>
+    <main class="main-content">
+        <div class="status-banner">
+            <div class="status-icon pulse-animation">⏳</div>
+            <h2 class="status-title">あと少しで完了です</h2>
+            <p class="status-desc">LINEで完了報告をお願いいたします</p>
         </div>
 
-        <!-- ステップ案内（情報商材風：ロック解除フロー） -->
-        <div class="completion-steps">
-            <!-- STEP 1: 完了 -->
-            <div class="step-item step-done">
-                <div class="step-status-icon">✅</div>
-                <div class="step-content">
+        <div class="glass-card flow-card">
+            <div class="step-item completed">
+                <div class="step-icon">✓</div>
+                <div class="step-text">
                     <span class="step-label">STEP 1</span>
-                    <span class="step-title">フォーム送信完了</span>
+                    <strong>フォーム送信完了</strong>
                 </div>
             </div>
 
-            <div class="step-connector">⬇</div>
+            <div class="step-line"></div>
 
-            <!-- STEP 2: 今ここ（強調） -->
-            <div class="step-item step-active">
-                <div class="step-status-icon">👉</div>
-                <div class="step-content">
+            <div class="step-item current">
+                <div class="step-icon">!</div>
+                <div class="step-text">
                     <span class="step-label">STEP 2</span>
-                    <span class="step-title">LINEで完了報告</span>
-                    <span class="step-desc">下のボタンをタップ！</span>
+                    <strong>LINEで完了報告</strong>
                 </div>
                 <div class="step-badge">あと1ステップ</div>
             </div>
 
-            <div class="step-connector">⬇</div>
+            <div class="step-line"></div>
 
-            <!-- STEP 3: ロック中 -->
-            <div class="step-item step-locked">
-                <div class="step-status-icon">🔒</div>
-                <div class="step-content">
+            <div class="step-item locked">
+                <div class="step-icon">🔒</div>
+                <div class="step-text">
                     <span class="step-label">STEP 3</span>
-                    <span class="step-title">龍神開運護符 2枚</span>
-                    <span class="step-desc">LINE報告後にロック解除</span>
+                    <strong>龍神開運護符 2枚</strong>
                 </div>
             </div>
         </div>
 
-        <!-- 🔔 次にやること（最強調） -->
-        <div class="next-action">
+        <div class="action-card glass-card gold-border">
             <div class="finger-point">👇</div>
-            <div class="next-action-label">▼ タップして完了報告 ▼</div>
+            <h3 class="action-title">▼ タップして完了報告 ▼</h3>
 
-            <!-- LINEボタン -->
-            <a href="https://line.me/R/oaMessage/@576iickk/?無料鑑定送信。このまま送信ボタンを押してください。" class="line-btn">
-                <span class="line-btn-icon">💬</span>
-                <span class="line-btn-text">LINEで完了報告をする</span>
-                <span class="line-btn-sub">（自動でLINEが開きます）</span>
+            <a href="https://line.me/R/oaMessage/@576iickk/?無料鑑定送信。このまま送信ボタンを押してください。" class="btn-line">
+                <span class="line-icon">💬</span>
+                <span class="line-text">LINEで完了報告をする</span>
             </a>
 
-            <p class="next-action-hint">
-                <span class="highlight-bg">表示されたメッセージを送信するだけ！</span><br>
-                <span class="small">※これを行わないと鑑定結果が届きません</span>
+            <p class="action-hint">
+                <strong>表示されたメッセージをそのまま送信するだけ！</strong><br>
+                <span class="text-alert">※これを行わないと鑑定結果が届きません</span>
             </p>
         </div>
 
-        <!-- 🐲 特典の案内 -->
-        <div class="reward-card">
+        <div class="reward-box glass-card">
             <div class="reward-icon">🐲</div>
-            <p class="reward-title">完了報告で<strong>龍神開運護符 2枚</strong>をプレゼント！</p>
-            <p class="reward-desc">LINEで完了報告を送っていただいた方に、<br>特別な開運護符をお届けします。</p>
+            <h4 class="reward-title">完了報告で<span class="text-gold">龍神開運護符 2枚</span>をプレゼント！</h4>
+            <p class="reward-desc">無料鑑定送信後、特別な開運護符をLINEにてお届けいたします。</p>
         </div>
 
-        <!-- 注意事項 -->
-        <div class="thanks-notice">
+        <div class="privacy-text text-center">
             ※ 鑑定結果はLINEにてお届けいたします。<br>
             ※ 鑑定には数日お時間をいただく場合がございます。
         </div>
 
     </main>
-
-    <!-- 和風装飾ライン -->
-    <div class="decorative-line">― ― ―</div>
-
-    <!-- ========================================
-       フッター
-  ======================================== -->
-    <footer class="site-footer">
-        &copy; 2025 しょうじの特別無料鑑定
+    <footer class="footer">
+        <p>&copy; 2025 しょうじの特別無料鑑定</p>
     </footer>
-
+    </div>
 </body>
 
 </html>
